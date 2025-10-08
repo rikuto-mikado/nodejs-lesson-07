@@ -76,11 +76,13 @@ const total = price * price; // Should be price * quantity
 1. **Set Breakpoint**: Click on the line number in VS Code to add a red dot
 2. **Start Debugging**: Press `F5` or click "Run and Debug" → "Node.js"
 3. **Debug Controls**:
-   - `F5` - Continue
-   - `F10` - Step Over (next line)
-   - `F11` - Step Into (enter function)
-   - `Shift+F11` - Step Out (exit function)
-   - `Shift+F5` - Stop debugging
+   - `F5` - Continue (Mac: `Fn+F5`)
+   - `F10` - Step Over (next line) (Mac: `Fn+F10`)
+   - `F11` - Step Into (enter function) (Mac: `Fn+F11`)
+   - `Shift+F11` - Step Out (exit function) (Mac: `Shift+Fn+F11`)
+   - `Shift+F5` - Stop debugging (Mac: `Shift+Fn+F5`)
+
+   **Note for Mac users**: If function keys control system features (brightness, volume, etc.), press `Fn` key together with the function key.
 
 #### Debug Console Commands
 ```javascript
