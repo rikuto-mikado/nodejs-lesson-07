@@ -69,3 +69,35 @@ const price = 100;
 const quantity = 3;
 const total = price * price; // Should be price * quantity
 ```
+
+### Debug Console Usage
+
+#### Basic Usage
+1. **Set Breakpoint**: Click on the line number in VS Code to add a red dot
+2. **Start Debugging**: Press `F5` or click "Run and Debug" → "Node.js"
+3. **Debug Controls**:
+   - `F5` - Continue
+   - `F10` - Step Over (next line)
+   - `F11` - Step Into (enter function)
+   - `Shift+F11` - Step Out (exit function)
+   - `Shift+F5` - Stop debugging
+
+#### Debug Console Commands
+```javascript
+// Check variable value
+variableName
+
+// Evaluate expression
+total + discount
+
+// Call function
+myFunction()
+
+// Modify variable (during pause)
+total = 100
+```
+
+#### Common Issues
+- **Port already in use (EADDRINUSE)**: Stop previous process with `lsof -i :3000` then `kill -9 <PID>`
+- **Breakpoint not hit**: Check if the code path is actually executed
+- **Variables not available**: Make sure you're paused at the right scope
