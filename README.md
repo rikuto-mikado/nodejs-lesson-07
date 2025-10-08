@@ -103,3 +103,77 @@ total = 100
 - **Port already in use (EADDRINUSE)**: Stop previous process with `lsof -i :3000` then `kill -9 <PID>`
 - **Breakpoint not hit**: Check if the code path is actually executed
 - **Variables not available**: Make sure you're paused at the right scope
+
+### Auto-Restart on File Changes
+
+#### Method 1: Using nodemon (Recommended)
+
+**Installation:**
+```bash
+npm install --save-dev nodemon
+```
+
+**Setup in package.json:**
+```json
+{
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  }
+}
+```
+
+**Usage:**
+```bash
+npm run dev
+```
+
+**Configuration (optional):**
+Create `nodemon.json` in project root:
+```json
+{
+  "watch": ["*.js", "src/**/*.js"],
+  "ignore": ["node_modules", "test/**"],
+  "ext": "js,json",
+  "delay": "1000"
+}
+```
+
+#### Method 2: Using VS Code launch.json
+
+**Setup:**
+1. Create `.vscode` folder in project root if it doesn't exist
+2. Create `.vscode/launch.json` file with the following content:
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch with Nodemon",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/app.js",
+      "restart": true,
+      "runtimeExecutable": "nodemon",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch without Nodemon",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/app.js",
+      "console": "integratedTerminal"
+    }
+  ]
+}
+```
+
+**Usage:**
+1. Press `F5` or click "Run and Debug" in VS Code sidebar
+2. Select "Launch with Nodemon" from the dropdown
+3. Click the green play button or press `F5`
+
+**Note:** This method requires nodemon to be installed (`npm install --save-dev nodemon`)
